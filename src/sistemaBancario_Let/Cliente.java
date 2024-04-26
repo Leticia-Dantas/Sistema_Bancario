@@ -4,20 +4,21 @@ import java.util.concurrent.locks.ReentrantLock;
 
 
 public class Cliente extends Thread {
-	 private Conta conta;
+	private Conta conta;
 	    private static final int GASTO_ALTO = 200;
 	    private static final int GASTO_BAIXO = 100;
-	    private int gastoAtual = GASTO_ALTO; // Começa com gasto alto
-	    private Lock lock = new ReentrantLock(); // Lock para garantir acesso seguro à conta
+	   	private int gastoAtual = GASTO_ALTO; // Começa com gasto alto
+	   	private Lock lock = new ReentrantLock(); // Lock para garantir acesso seguro à conta
 
-	    public Cliente(Conta conta) {
+	 // Construtor que recebe uma conta como parâmetro e associa à cliente.
+	   	public Cliente(Conta conta) {
 	        this.conta = conta;
-	    }
-
+	   	}
+	 // Método para Compras do cliente.
 	    public void run() {
 	        while (true) {
 	            try {
-	                lock.lock(); // Bloqueia o acesso à conta
+	                lock.lock(); // Bloqueia o acesso à conta :)Deu certo!
 	                if (conta.getSaldo() >= gastoAtual) {
 	                    conta.sacar(gastoAtual);
 	                    System.out.println("Cliente gastou: R$" + gastoAtual);

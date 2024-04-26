@@ -26,10 +26,7 @@ public class Conta {
 
 		public void setSaldoFuncionario(double saldoFuncionario) {
 			this.saldoFuncionario = saldoFuncionario;
-		}
-
-	
-	    
+		}	    
 }
 
 

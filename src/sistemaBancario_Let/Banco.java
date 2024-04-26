@@ -14,21 +14,22 @@ public class Banco {
         contasFuncionarios = new Conta[4];
         contasInvestimentos = new Conta[4];
         contasClientes = new Conta[5];
-
+     // Inicialização das contas dos funcionários
         for (int i = 0; i < 4; i++) {
             contasFuncionarios[i] = new Conta(0);
             contasInvestimentos[i] = new Conta(0);
         }
-
+     // Inicialização das contas dos clientes com saldo inicial de R$1000
         for (int i = 0; i < 5; i++) {
             contasClientes[i] = new Conta(1000);
         }
-
         contaLoja1 = new Conta(1400);
         contaLoja2 = new Conta(1400);
     }
+    
+ // Método para transferir dinheiro entre contas
     public void transferir(Conta origem, Conta destino, double valor) {
-        lock.lock();
+        lock.lock(); //O lock fazendo a trava
         try {
             origem.sacar(valor);
             destino.depositar(valor);
@@ -39,9 +40,9 @@ public class Banco {
             lock.unlock();
         }
     }
-
+ // Método para pagar funcionários de uma loja
     public void pagarFuncionarios(Conta contaLoja, String nomeLoja) {
-        lock.lock();
+        lock.lock(); //O lock fazendo a trava
         try {
             System.out.println("Pagamento de funcionários da " + nomeLoja + " foi realizado.");
             double totalPagamento = 1400; // pagamento dos funcionários
@@ -54,7 +55,8 @@ public class Banco {
             lock.unlock();
         }
     }
-    // getters para as contas
+    
+    // getters das contas
     public Conta[] getContasFuncionarios() {
         return contasFuncionarios;
     }
